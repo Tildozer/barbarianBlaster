@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://3xuslvtwagb3"]
+[gd_scene load_steps=7 format=3 uid="uid://3xuslvtwagb3"]
 
 [ext_resource type="PackedScene" uid="uid://d2pxw6s3qdsq7" path="res://scenes/levels/evironment.tscn" id="1_ukglk"]
+[ext_resource type="PackedScene" uid="uid://b5ufedgjfwfpp" path="res://scenes/levels/ray_picker_camera.tscn" id="2_o1chu"]
 [ext_resource type="MeshLibrary" uid="uid://brwlqnmkpfnvy" path="res://mesh_libraries/space_library.tres" id="2_wwrw0"]
 [ext_resource type="PackedScene" uid="uid://eigadlnby06c" path="res://scenes/characters/enemy.tscn" id="3_o1chu"]
 [ext_resource type="PackedScene" uid="uid://ypbyg71iw2c5" path="res://scenes/base/base.tscn" id="4_wwrw0"]
@@ -17,7 +18,7 @@ point_count = 7
 [node name="Evironment" parent="." instance=ExtResource("1_ukglk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.122318, -0.162905, -0.0773745)
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="ray_picker_camera" parent="." instance=ExtResource("2_o1chu")]
 transform = Transform3D(1, 0, 0, 0, 0.422618, 0.906308, 0, -0.906308, 0.422618, 0, 14.5, 9.5)
 
 [node name="GridMap" type="GridMap" parent="."]
