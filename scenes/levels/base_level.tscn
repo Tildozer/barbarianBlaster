@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://3xuslvtwagb3"]
+[gd_scene load_steps=6 format=3 uid="uid://3xuslvtwagb3"]
 
-[ext_resource type="MeshLibrary" uid="uid://brwlqnmkpfnvy" path="res://mesh_libraries/space_library.tres" id="1_6tisa"]
-[ext_resource type="PackedScene" uid="uid://d2pxw6s3qdsq7" path="res://scenes/evironment.tscn" id="1_dbkse"]
+[ext_resource type="PackedScene" uid="uid://d2pxw6s3qdsq7" path="res://scenes/levels/evironment.tscn" id="1_ukglk"]
+[ext_resource type="MeshLibrary" uid="uid://brwlqnmkpfnvy" path="res://mesh_libraries/space_library.tres" id="2_wwrw0"]
+[ext_resource type="PackedScene" uid="uid://eigadlnby06c" path="res://scenes/characters/enemy.tscn" id="3_o1chu"]
+[ext_resource type="PackedScene" uid="uid://ypbyg71iw2c5" path="res://scenes/base/base.tscn" id="4_wwrw0"]
 
 [sub_resource type="Curve3D" id="Curve3D_dbkse"]
 _data = {
@@ -12,13 +14,14 @@ point_count = 7
 
 [node name="base_level" type="Node3D"]
 
-[node name="Evironment" parent="." instance=ExtResource("1_dbkse")]
+[node name="Evironment" parent="." instance=ExtResource("1_ukglk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.122318, -0.162905, -0.0773745)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.422618, 0.906308, 0, -0.906308, 0.422618, 0, 14.5, 9.5)
 
 [node name="GridMap" type="GridMap" parent="."]
-mesh_library = ExtResource("1_6tisa")
+mesh_library = ExtResource("2_wwrw0")
 cell_size = Vector3(4, 4, 4)
 cell_center_y = false
 data = {
@@ -60,7 +63,7 @@ path_joined = false
 
 [node name="right_edge" type="CSGPolygon3D" parent="Path3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.422835, 0, -0.0034008)
-polygon = PackedVector2Array(1.1, 0, 1.1, 0.15, 0.9, 0.15, 0.9, 0)
+polygon = PackedVector2Array(0.9, 0, 0.9, 0.15, 1.1, 0.15, 1.1, 0)
 mode = 2
 path_node = NodePath("..")
 path_interval_type = 0
@@ -72,3 +75,9 @@ path_local = false
 path_continuous_u = true
 path_u_distance = 1.0
 path_joined = false
+
+[node name="enemy" parent="Path3D" instance=ExtResource("3_o1chu")]
+transform = Transform3D(-0.0022346, 0, -0.99999, 0, 1, 0, 0.99999, 0, -0.0022346, -22.2142, 0, 5.8103)
+
+[node name="base" parent="." instance=ExtResource("4_wwrw0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.0006, 0, -6.15938)
