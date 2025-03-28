@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3 uid="uid://c8gdutuvb6pda"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_p2m0r"]
+height = 1.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_gs8ou"]
+top_radius = 0.6
+bottom_radius = 0.6
+height = 0.6
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_g5nck"]
+top_radius = 0.3
+bottom_radius = 0.2
+height = 0.8
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_x0xmy"]
+bottom_radius = 0.3
+height = 1.5
+
+[sub_resource type="SphereMesh" id="SphereMesh_gedw5"]
+radius = 0.45
+height = 0.9
+
+[sub_resource type="TorusMesh" id="TorusMesh_p2m0r"]
+inner_radius = 0.4
+outer_radius = 0.6
+
+[sub_resource type="TorusMesh" id="TorusMesh_gs8ou"]
+inner_radius = 0.3
+outer_radius = 0.4
+
+[node name="turret" type="Node3D"]
+
+[node name="turret_base" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("CylinderMesh_p2m0r")
+
+[node name="barrel_holder" type="MeshInstance3D" parent="turret_base"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+mesh = SubResource("CylinderMesh_gs8ou")
+
+[node name="barrel_base" type="MeshInstance3D" parent="turret_base"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+mesh = SubResource("CylinderMesh_g5nck")
+
+[node name="barrel" type="MeshInstance3D" parent="turret_base/barrel_base"]
+transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 0, 0.7, 1)
+mesh = SubResource("CylinderMesh_x0xmy")
+
+[node name="base" type="MeshInstance3D" parent="turret_base/barrel_base/barrel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 4.37114e-08)
+mesh = SubResource("SphereMesh_gedw5")
+
+[node name="front_ring" type="MeshInstance3D" parent="turret_base/barrel_base/barrel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+mesh = SubResource("TorusMesh_p2m0r")
+
+[node name="back_ring" type="MeshInstance3D" parent="turret_base/barrel_base/barrel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7, 0)
+mesh = SubResource("TorusMesh_gs8ou")

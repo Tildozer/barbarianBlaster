@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://f377l1o3w0o4" path="res://scripts/ray_picker_camera.gd" id="1_fmfcl"]
 
 [node name="ray_picker_camera" type="Camera3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 script = ExtResource("1_fmfcl")
 
 [node name="RayCast3D" type="RayCast3D" parent="."]

@@ -1,7 +1,8 @@
 extends Camera3D
 
-@onready var ray_picker: RayCast3D = $RayCast3D
+@export var gridmap: GridMap
 
+@onready var ray_picker: RayCast3D = $RayCast3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -9,8 +10,19 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var mouse_position: Vector2 = get_viewport().get_mouse_position()
 	ray_picker.target_position = project_local_ray_normal(mouse_position) * 100.0
 	ray_picker.force_raycast_update()
-	printt(ray_picker.get_collider(), ray_picker.get_collision_point())
+
+	if ray_picker.is_colliding():
+		Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
+		var collider = ray_picker.get_collider()
+		if collider is GridMap:
+			if Input.is_action_just_pressed("click"):
+				var collision_point = ray_picker.get_collision_point()
+				var cell = gridmap.local_to_map(collision_point)
+				if gridmap.get_cell_item(cell) == 0:
+					gridmap.set_cell_item(cell, 1)
+	else:
+		Input.set_default_cursor_shape(Input.CURSOR_ARROW)
