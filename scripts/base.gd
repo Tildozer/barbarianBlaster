@@ -4,6 +4,7 @@ var white: Color = Color.WHITE
 var red: Color = Color.RED
 
 @export_range(1, 50, 1.0) var max_health: int = 5
+
 var current_health: int:
 	set(health_in):
 		current_health = health_in
