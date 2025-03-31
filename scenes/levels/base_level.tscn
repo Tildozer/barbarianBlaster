@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://eigadlnby06c" path="res://scenes/characters/enemy.tscn" id="3_o1chu"]
 [ext_resource type="PackedScene" uid="uid://ypbyg71iw2c5" path="res://scenes/base/base.tscn" id="4_wwrw0"]
 [ext_resource type="Script" uid="uid://bvvdbhl2btvr0" path="res://scripts/turret_manager.gd" id="6_h4ce7"]
-[ext_resource type="PackedScene" uid="uid://c8gdutuvb6pda" path="res://scenes/characters/turret.tscn" id="7_53c65"]
+[ext_resource type="PackedScene" uid="uid://c8gdutuvb6pda" path="res://scenes/turret/turret.tscn" id="7_53c65"]
 
 [sub_resource type="Curve3D" id="Curve3D_dbkse"]
 _data = {
@@ -20,9 +20,10 @@ point_count = 7
 [node name="Evironment" parent="." instance=ExtResource("1_ukglk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.122318, -0.162905, -0.0773745)
 
-[node name="ray_picker_camera" parent="." node_paths=PackedStringArray("gridmap") instance=ExtResource("2_o1chu")]
+[node name="ray_picker_camera" parent="." node_paths=PackedStringArray("gridmap", "turret_manager") instance=ExtResource("2_o1chu")]
 transform = Transform3D(1, 0, 0, 0, 0.422618, 0.906308, 0, -0.906308, 0.422618, 0, 14.5, 9.5)
 gridmap = NodePath("../GridMap")
+turret_manager = NodePath("../turret_manager")
 
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource("2_wwrw0")
@@ -84,7 +85,7 @@ path_joined = false
 transform = Transform3D(-0.0022346, 0, -0.99999, 0, 1, 0, 0.99999, 0, -0.0022346, -22.2142, 0, 5.8103)
 
 [node name="enemy2" parent="Path3D" instance=ExtResource("3_o1chu")]
-transform = Transform3D(-0.0519945, 0, -0.998639, 0, 1, 0, 0.998639, 0, -0.0519945, -17.227, 0, 6.16267)
+transform = Transform3D(-0.0519944, 0, -0.998639, 0, 1, 0, 0.998639, 0, -0.0519944, -17.227, 0, 6.16267)
 progress = 5.0
 
 [node name="enemy3" parent="Path3D" instance=ExtResource("3_o1chu")]
