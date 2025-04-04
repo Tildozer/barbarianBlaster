@@ -102,7 +102,7 @@ script = ExtResource("6_h4ce7")
 turret = ExtResource("7_53c65")
 enemy_path = NodePath("../enemy_path")
 
-[node name="bank" type="MarginContainer" parent="."]
+[node name="bank" type="MarginContainer" parent="." groups=["bank"]]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
