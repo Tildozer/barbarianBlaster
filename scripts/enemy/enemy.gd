@@ -2,7 +2,7 @@ extends PathFollow3D
 
 @export_range(50, 200) var max_health := 50
 @export_range(1, 50, 0.5) var speed: float = 5.0
-@export var gold_value := 15
+@export var gold_value := 25
 
 var current_health : int:
 	set(health_in):

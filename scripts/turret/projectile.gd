@@ -17,4 +17,4 @@ func _on_area_entered(area:Area3D) -> void:
 		# area.take_damage(1)
 		queue_free()
 		# area.take_damage(50)
-		area.get_parent().take_damage(10)
+		area.get_parent().take_damage(25)

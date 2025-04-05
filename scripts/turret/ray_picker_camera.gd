@@ -19,7 +19,7 @@ func _process(_delta: float) -> void:
 	ray_picker.force_raycast_update()
 
 	if ray_picker.is_colliding():
-		if bank.gold > turret_cost:
+		if bank.gold >= turret_cost:
 			Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
 			var collider = ray_picker.get_collider()
 			if collider is GridMap:

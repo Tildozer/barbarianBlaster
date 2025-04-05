@@ -1,14 +1,15 @@
-[gd_scene load_steps=12 format=3 uid="uid://3xuslvtwagb3"]
+[gd_scene load_steps=13 format=3 uid="uid://3xuslvtwagb3"]
 
 [ext_resource type="PackedScene" uid="uid://d2pxw6s3qdsq7" path="res://scenes/levels/evironment.tscn" id="1_ukglk"]
 [ext_resource type="PackedScene" uid="uid://b5ufedgjfwfpp" path="res://scenes/levels/ray_picker_camera.tscn" id="2_o1chu"]
 [ext_resource type="MeshLibrary" uid="uid://brwlqnmkpfnvy" path="res://mesh_libraries/space_library.tres" id="2_wwrw0"]
 [ext_resource type="PackedScene" uid="uid://eigadlnby06c" path="res://scenes/characters/enemy.tscn" id="3_o1chu"]
-[ext_resource type="Script" uid="uid://ewvshunuji1p" path="res://scripts/enemy_path.gd" id="4_53c65"]
+[ext_resource type="Script" uid="uid://ewvshunuji1p" path="res://scripts/enemy/enemy_path.gd" id="4_53c65"]
 [ext_resource type="PackedScene" uid="uid://ypbyg71iw2c5" path="res://scenes/base/base.tscn" id="4_wwrw0"]
-[ext_resource type="Script" uid="uid://bvvdbhl2btvr0" path="res://scripts/turret_manager.gd" id="6_h4ce7"]
+[ext_resource type="Script" uid="uid://bvvdbhl2btvr0" path="res://scripts/turret/turret_manager.gd" id="6_h4ce7"]
 [ext_resource type="PackedScene" uid="uid://c8gdutuvb6pda" path="res://scenes/turret/turret.tscn" id="7_53c65"]
-[ext_resource type="Script" uid="uid://t0x4vwuxlfha" path="res://scripts/bank.gd" id="9_43bxi"]
+[ext_resource type="Script" uid="uid://t0x4vwuxlfha" path="res://scripts/UI/bank.gd" id="9_43bxi"]
+[ext_resource type="PackedScene" uid="uid://cc2h7v5fs170g" path="res://scenes/difficulty_manager/difficulty_manager.tscn" id="10_j7gcg"]
 
 [sub_resource type="Curve3D" id="Curve3D_dbkse"]
 _data = {
@@ -40,10 +41,11 @@ data = {
 "cells": PackedInt32Array(65535, 65534, 655360, 65535, 2, 655360, 65531, 65535, 655360, 65531, 65534, 655360, 65531, 0, 655360, 65531, 2, 655360, 65532, 65534, 655360, 65532, 2, 655360, 65533, 65534, 655360, 65534, 65534, 655360, 65534, 2, 655360, 0, 65534, 655360, 0, 2, 655360, 1, 65534, 655360, 1, 2, 655360, 2, 65534, 655360, 2, 2, 655360, 3, 2, 655360, 4, 2, 655360, 65533, 2, 655360, 65532, 0, 655360, 65532, 65535, 655360, 65535, 0, 655360, 65534, 0, 655360, 65534, 1, 655360, 65535, 1, 655360, 0, 0, 655360, 0, 1, 655360, 2, 65535, 655360, 4, 1, 655360, 4, 0, 655360, 4, 65535, 655360, 4, 65534, 655360, 2, 0, 655360)
 }
 
-[node name="enemy_path" type="Path3D" parent="."]
+[node name="enemy_path" type="Path3D" parent="." node_paths=PackedStringArray("difficulty_manager")]
 curve = SubResource("Curve3D_dbkse")
 script = ExtResource("4_53c65")
 enemy_scene = ExtResource("3_o1chu")
+difficulty_manager = NodePath("../difficulty_manager")
 
 [node name="road" type="CSGPolygon3D" parent="enemy_path"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.438838, 0, 0)
@@ -121,5 +123,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 8
 text = "placeHolder"
 label_settings = SubResource("LabelSettings_53c65")
+
+[node name="difficulty_manager" parent="." instance=ExtResource("10_j7gcg")]
 
 [connection signal="timeout" from="enemy_path/Timer" to="enemy_path" method="spawn_enemy"]

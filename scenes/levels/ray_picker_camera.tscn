@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b5ufedgjfwfpp"]
 
-[ext_resource type="Script" uid="uid://f377l1o3w0o4" path="res://scripts/ray_picker_camera.gd" id="1_fmfcl"]
+[ext_resource type="Script" uid="uid://f377l1o3w0o4" path="res://scripts/turret/ray_picker_camera.gd" id="1_fmfcl"]
 
 [node name="ray_picker_camera" type="Camera3D"]
 script = ExtResource("1_fmfcl")

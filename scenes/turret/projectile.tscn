@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://m5dtgrfrtftf"]
 
-[ext_resource type="Script" uid="uid://cdll07i84l5cv" path="res://scripts/projectile.gd" id="1_78ogm"]
+[ext_resource type="Script" uid="uid://cdll07i84l5cv" path="res://scripts/turret/projectile.gd" id="1_78ogm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_30my0"]
 albedo_color = Color(0.602825, 0.100029, 4.81308e-08, 1)
