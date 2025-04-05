@@ -8,8 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://ypbyg71iw2c5" path="res://scenes/base/base.tscn" id="4_wwrw0"]
 [ext_resource type="Script" uid="uid://bvvdbhl2btvr0" path="res://scripts/turret/turret_manager.gd" id="6_h4ce7"]
 [ext_resource type="PackedScene" uid="uid://c8gdutuvb6pda" path="res://scenes/turret/turret.tscn" id="7_53c65"]
-[ext_resource type="Script" uid="uid://t0x4vwuxlfha" path="res://scripts/UI/bank.gd" id="9_43bxi"]
+[ext_resource type="PackedScene" uid="uid://cdrrvcf4s7kfs" path="res://scenes/UI/bank.tscn" id="9_qhwlw"]
 [ext_resource type="PackedScene" uid="uid://cc2h7v5fs170g" path="res://scenes/difficulty_manager/difficulty_manager.tscn" id="10_j7gcg"]
+[ext_resource type="PackedScene" uid="uid://co1n1wv4bogdp" path="res://scenes/UI/victory_layer.tscn" id="11_0caop"]
 
 [sub_resource type="Curve3D" id="Curve3D_dbkse"]
 _data = {
@@ -17,11 +18,6 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 7
-
-[sub_resource type="LabelSettings" id="LabelSettings_53c65"]
-font_size = 64
-outline_size = 16
-outline_color = Color(0, 0, 0, 1)
 
 [node name="base_level" type="Node3D"]
 
@@ -106,38 +102,12 @@ script = ExtResource("6_h4ce7")
 turret = ExtResource("7_53c65")
 enemy_path = NodePath("../enemy_path")
 
-[node name="bank" type="MarginContainer" parent="." groups=["bank"]]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 16
-script = ExtResource("9_43bxi")
-
-[node name="Label" type="Label" parent="bank"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 8
-text = "placeHolder"
-label_settings = SubResource("LabelSettings_53c65")
+[node name="bank" parent="." instance=ExtResource("9_qhwlw")]
 
 [node name="difficulty_manager" parent="." instance=ExtResource("10_j7gcg")]
 
-[node name="victory_layer" type="CanvasLayer" parent="."]
+[node name="victory_layer" parent="." instance=ExtResource("11_0caop")]
 visible = false
-
-[node name="ColorRect" type="ColorRect" parent="victory_layer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.588235)
 
 [connection signal="timeout" from="enemy_path/Timer" to="enemy_path" method="spawn_enemy"]
 [connection signal="stop_spawning_enemies" from="difficulty_manager" to="enemy_path" method="_on_difficulty_manager_stop_spawning_enemies"]
