@@ -98,6 +98,7 @@ autostart = true
 
 [node name="base" parent="." instance=ExtResource("4_wwrw0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.0006, 0, -6.15938)
+max_health = 50
 
 [node name="turret_manager" type="Node3D" parent="." node_paths=PackedStringArray("enemy_path")]
 script = ExtResource("6_h4ce7")
@@ -127,3 +128,4 @@ label_settings = SubResource("LabelSettings_53c65")
 [node name="difficulty_manager" parent="." instance=ExtResource("10_j7gcg")]
 
 [connection signal="timeout" from="enemy_path/Timer" to="enemy_path" method="spawn_enemy"]
+[connection signal="stop_spawning_enemies" from="difficulty_manager" to="enemy_path" method="_on_difficulty_manager_stop_spawning_enemies"]

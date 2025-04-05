@@ -27,6 +27,7 @@ func _process(delta: float) -> void:
 	if progress_ratio == 1.0:
 		base.take_damage(1)
 		set_process(false)
+		queue_free()
 		
 
 func take_damage(damage: int) -> void:

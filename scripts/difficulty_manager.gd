@@ -1,5 +1,7 @@
 extends Node
 
+signal stop_spawning_enemies
+
 @export var game_length := 30.0
 @export var spawn_time_curve: Curve
 
@@ -22,3 +24,7 @@ func get_spawn_time() -> float:
 
 func get_enemy_health() -> int:
 	return int(enemy_health_curve.sample(game_progress_ratio()))
+
+
+func _on_timer_timeout() -> void:
+	stop_spawning_enemies.emit()
