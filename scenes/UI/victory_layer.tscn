@@ -1,7 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://co1n1wv4bogdp"]
+[gd_scene load_steps=6 format=3 uid="uid://co1n1wv4bogdp"]
 
 [ext_resource type="Script" uid="uid://caqa3wd4y5vhx" path="res://scripts/UI/victory_layer.gd" id="1_rvnuu"]
 [ext_resource type="Texture2D" uid="uid://najjyh21dw74" path="res://assets/UI/star.png" id="2_6qrui"]
+[ext_resource type="FontFile" uid="uid://cm7rdnhgpqs3x" path="res://assets/fonts/cascadiaCode/CascadiaCode.ttf" id="2_ixahn"]
+
+[sub_resource type="Theme" id="Theme_e631n"]
+default_font = ExtResource("2_ixahn")
 
 [sub_resource type="LabelSettings" id="LabelSettings_elchx"]
 font_size = 96
@@ -23,6 +27,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_e631n")
 
 [node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
 custom_minimum_size = Vector2(400, 400)
@@ -90,6 +95,7 @@ horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 10
 
 [node name="retry" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2

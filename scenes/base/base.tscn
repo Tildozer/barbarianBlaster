@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://ypbyg71iw2c5"]
+[gd_scene load_steps=4 format=3 uid="uid://ypbyg71iw2c5"]
 
 [ext_resource type="Script" uid="uid://s6xsrg21m83h" path="res://scripts/base.gd" id="1_yoymw"]
 [ext_resource type="PackedScene" uid="uid://e0u3hmhiw2ud" path="res://assets/castle/Base.glb" id="2_ccqok"]
+[ext_resource type="FontFile" uid="uid://cm7rdnhgpqs3x" path="res://assets/fonts/cascadiaCode/CascadiaCode.ttf" id="2_ttpcr"]
 
 [node name="base" type="Node3D" groups=["base"]]
 script = ExtResource("1_yoymw")
@@ -9,6 +10,7 @@ script = ExtResource("1_yoymw")
 [node name="Label3D" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.5, 0)
 billboard = 1
+font = ExtResource("2_ttpcr")
 font_size = 500
 outline_size = 100
 

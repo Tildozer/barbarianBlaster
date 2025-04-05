@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://3xuslvtwagb3"]
+[gd_scene load_steps=17 format=3 uid="uid://3xuslvtwagb3"]
 
 [ext_resource type="PackedScene" uid="uid://d2pxw6s3qdsq7" path="res://scenes/levels/evironment.tscn" id="1_ukglk"]
 [ext_resource type="PackedScene" uid="uid://b5ufedgjfwfpp" path="res://scenes/levels/ray_picker_camera.tscn" id="2_o1chu"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://cdrrvcf4s7kfs" path="res://scenes/UI/bank.tscn" id="9_qhwlw"]
 [ext_resource type="PackedScene" uid="uid://cc2h7v5fs170g" path="res://scenes/difficulty_manager/difficulty_manager.tscn" id="10_j7gcg"]
 [ext_resource type="PackedScene" uid="uid://co1n1wv4bogdp" path="res://scenes/UI/victory_layer.tscn" id="11_0caop"]
+[ext_resource type="FontFile" uid="uid://cm7rdnhgpqs3x" path="res://assets/fonts/cascadiaCode/CascadiaCode.ttf" id="11_bd4s6"]
 
 [sub_resource type="Curve3D" id="Curve3D_dbkse"]
 _data = {
@@ -22,6 +23,9 @@ point_count = 7
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qhwlw"]
 albedo_color = Color(0.579207, 0.414332, 0, 1)
+
+[sub_resource type="Theme" id="Theme_1vfnp"]
+default_font = ExtResource("11_bd4s6")
 
 [node name="base_level" type="Node3D"]
 
@@ -110,7 +114,7 @@ turret = ExtResource("7_53c65")
 enemy_path = NodePath("../enemy_path")
 
 [node name="bank" parent="." instance=ExtResource("9_qhwlw")]
-starting_gold = 15000
+theme = SubResource("Theme_1vfnp")
 
 [node name="difficulty_manager" parent="." instance=ExtResource("10_j7gcg")]
 
