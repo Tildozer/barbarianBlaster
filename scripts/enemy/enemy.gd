@@ -9,7 +9,6 @@ var current_health : int:
 		if health_in < current_health:
 			animation_player.play("takes_damage")
 		current_health = health_in
-		print("Health is now: ", current_health)
 		if current_health < 1:
 			bank.gold += gold_value
 			queue_free()

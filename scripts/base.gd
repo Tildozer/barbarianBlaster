@@ -8,7 +8,6 @@ var red: Color = Color.RED
 var current_health: int:
 	set(health_in):
 		current_health = health_in
-		print("Health is now: ", current_health)
 		label.text = str(current_health, "/", max_health)
 		var step: float = float(current_health) / max_health
 		label.modulate = red.lerp(white, step)
@@ -19,6 +18,7 @@ var current_health: int:
 
 func _ready() -> void:
 	current_health = max_health
+	Engine.time_scale = 10.0
 
 func take_damage(damage: int) -> void:
 	current_health -= damage

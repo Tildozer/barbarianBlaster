@@ -41,11 +41,12 @@ data = {
 "cells": PackedInt32Array(65535, 65534, 655360, 65535, 2, 655360, 65531, 65535, 655360, 65531, 65534, 655360, 65531, 0, 655360, 65531, 2, 655360, 65532, 65534, 655360, 65532, 2, 655360, 65533, 65534, 655360, 65534, 65534, 655360, 65534, 2, 655360, 0, 65534, 655360, 0, 2, 655360, 1, 65534, 655360, 1, 2, 655360, 2, 65534, 655360, 2, 2, 655360, 3, 2, 655360, 4, 2, 655360, 65533, 2, 655360, 65532, 0, 655360, 65532, 65535, 655360, 65535, 0, 655360, 65534, 0, 655360, 65534, 1, 655360, 65535, 1, 655360, 0, 0, 655360, 0, 1, 655360, 2, 65535, 655360, 4, 1, 655360, 4, 0, 655360, 4, 65535, 655360, 4, 65534, 655360, 2, 0, 655360)
 }
 
-[node name="enemy_path" type="Path3D" parent="." node_paths=PackedStringArray("difficulty_manager")]
+[node name="enemy_path" type="Path3D" parent="." node_paths=PackedStringArray("difficulty_manager", "victory_screen")]
 curve = SubResource("Curve3D_dbkse")
 script = ExtResource("4_53c65")
 enemy_scene = ExtResource("3_o1chu")
 difficulty_manager = NodePath("../difficulty_manager")
+victory_screen = NodePath("../victory_layer")
 
 [node name="road" type="CSGPolygon3D" parent="enemy_path"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.438838, 0, 0)
@@ -57,7 +58,7 @@ path_interval = 0.5
 path_simplify_angle = 0.0
 path_rotation = 2
 path_rotation_accurate = false
-path_local = false
+path_local = true
 path_continuous_u = true
 path_u_distance = 1.0
 path_joined = false
@@ -72,7 +73,7 @@ path_interval = 0.5
 path_simplify_angle = 0.0
 path_rotation = 2
 path_rotation_accurate = false
-path_local = false
+path_local = true
 path_continuous_u = true
 path_u_distance = 1.0
 path_joined = false
@@ -87,7 +88,7 @@ path_interval = 0.5
 path_simplify_angle = 0.0
 path_rotation = 2
 path_rotation_accurate = false
-path_local = false
+path_local = true
 path_continuous_u = true
 path_u_distance = 1.0
 path_joined = false
@@ -126,6 +127,17 @@ text = "placeHolder"
 label_settings = SubResource("LabelSettings_53c65")
 
 [node name="difficulty_manager" parent="." instance=ExtResource("10_j7gcg")]
+
+[node name="victory_layer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="victory_layer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.588235)
 
 [connection signal="timeout" from="enemy_path/Timer" to="enemy_path" method="spawn_enemy"]
 [connection signal="stop_spawning_enemies" from="difficulty_manager" to="enemy_path" method="_on_difficulty_manager_stop_spawning_enemies"]
